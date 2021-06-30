@@ -1,0 +1,16 @@
+body {
+	margin: 5px 0px 0px 15px;
+}
+
+a {
+	color: #779ecb;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4477b2;
+}
+
+#bot-options a {
+	margin-right: 50px;
+}

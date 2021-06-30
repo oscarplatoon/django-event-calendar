@@ -1,0 +1,13 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+	<form action="{% url 'events:create_event' %}" method="post">
+		{% csrf_token %}
+		{{ event_form.as_p }}
+
+		<button type="submit">Submit</button>
+	</form>
+
+	<br />
+	<a href="{% url 'events:list_events' %}">Cancel</a>
+{% endblock %}
