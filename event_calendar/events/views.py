@@ -26,25 +26,33 @@ def create_event(request):
         if form.is_valid():
             new_event = form.save()
             return redirect('events:show_event', event_id=new_event.id)
+        else:
+            event_form = EventForm()
+            context = {'event_form': event_form, 'type': 'Create'}
+            return render(request, 'events/event_form.html', context)
     else:  # if request is GET, we create a blank form and display it
+        # I didn't follow DRY here
         event_form = EventForm()
-        context = {'event_form': event_form}
-        return render(request, 'events/create_event.html', context)
+        context = {'event_form': event_form, 'type': 'Create'}
+        return render(request, 'events/event_form.html', context)
 
 
 def edit_event(request, event_id):
     event = Event.objects.get(id=event_id)
     if request.method == 'POST':
-        # Passing in instance of unedited_event b/c we want to edit that instance with the POST data.
+        # Passing in instance of event b/c we want to edit that instance with the POST data.
         form = EventForm(request.POST, instance=event)
         if form.is_valid():
-            event = form.save()
-            event.save()
-            return redirect('events:show_event', event_id=event.id)
+            form.save()  # does the same thing as calling .save() on an Event instance
+            return redirect('events:show_event', event_id=event_id)
+        else:
+            event_form = EventForm()
+            context = {'event_form': event_form, 'type': 'Edit'}
+            return render(request, 'events/event_form.html', context)
     else:  # if request is GET
         event_form = EventForm(instance=event)
-        context = {'event_form': event_form}
-        return render(request, 'events/create_event.html', context)
+        context = {'event_form': event_form, 'type': 'Edit'}
+        return render(request, 'events/event_form.html', context)
 
 
 def delete_event(request, event_id):

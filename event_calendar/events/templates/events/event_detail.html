@@ -13,8 +13,8 @@
 	
 	<br />
 	<div id='bot-options'>
-		<a href="{% url 'events:edit_event' event_id=event.id %}">Edit</a>
 		<a href="{% url 'events:delete_event' event_id=event.id%}">Delete</a>
+		<a href="{% url 'events:edit_event' event_id=event.id %}">Edit</a>
 		<a href="{% url 'events:list_events' %}">Back</a>
 	</div>
 {% endblock %}

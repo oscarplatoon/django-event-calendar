@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
-# add validator that checks if starts_at < ends_at
+# tell users what type of form it is
 
 
 class Event(models.Model):
@@ -21,3 +22,9 @@ class Event(models.Model):
             Ends at: {self.ends_at}
             Created at: {self.created_at}        
         """
+
+    def clean(self):
+        super().clean()  # calling the default validators and other things that clean() does
+        if self.ends_at < self.starts_at:
+            raise ValidationError(
+                "An event cannot end before it even started!")

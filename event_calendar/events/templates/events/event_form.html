@@ -1,7 +1,11 @@
 {% extends "events/base.html" %}
 
 {% block content %}
-	<form action="{% url 'events:create_event' %}" method="post">
+	{% comment %} If you have a form tag without an action attribute then the data will be sent to its own page. {% endcomment %}
+	<h2>
+		{{ type }} Post
+	</h2>
+	<form method="post">
 		{% csrf_token %}
 		{{ event_form.as_p }}
 
