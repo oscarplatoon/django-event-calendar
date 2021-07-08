@@ -1,0 +1,12 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+	<ul>
+		{% for event in events %}
+			<li><a href={% url 'events:show_event' event_id=event.id %}>{{ event.name }} ({{ event.starts_at }})</a></li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'events:create_event' %}">New</a>
+	&nbsp;&nbsp;
+{% endblock %}
