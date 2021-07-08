@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 # tell users what type of form it is
 
@@ -13,6 +14,8 @@ class Event(models.Model):
     ends_at = models.DateTimeField(
         default=timezone.now, blank=False, null=False)
     created_at = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return f"""

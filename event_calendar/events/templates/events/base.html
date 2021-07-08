@@ -17,9 +17,17 @@
 			Event Calendar
 		</a>
 	</h1>
-	<div>
-		{% block content %}
-		{% endblock %}
-	</div>
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">logout</a></p>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
 </body>
 </html>
