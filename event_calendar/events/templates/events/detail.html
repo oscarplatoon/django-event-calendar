@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+  
+{% block page-title %}
+{{ my_event.name }}
+{% endblock %}
+
+{% block main-content %}
+<h1>{{ my_event.name }}</h1>
+<h3>{{ my_event.starts_at }} </h3>
+<h3>{{ my_event.ends_at }} </h3>
+<h3>{{ my_event.created_at }} </h3>
+<p>{{ my_event.description }}</p>
+<hr>
+<a href="{% url 'events:event_update' my_event.id %}"><button>Update Event</button></a>
+<a href="{% url 'events:event_delete' my_event.id %}"><button>Delete Event</button></a>
+{% endblock %}
+
+
