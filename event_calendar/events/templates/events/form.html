@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main-content %}
+<h1>
+    {{ create_or_update|yesno:"Create Event,Update Event"}}
+</h1>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ event_form.as_table }}
+    </table>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

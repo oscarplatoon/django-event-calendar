@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+  
+{% block page-title %}
+This is my HOME PAGE
+{% endblock %}
+
+{% block main-content %}
+<hr>
+<a href="{% url 'events:event_create' %}"><button class="btn btn-info">New Event</button></a>
+<hr>
+<ul>
+    {% for e in all_events %}
+        <li><a href="event/{{ e.id }}">{{ e.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

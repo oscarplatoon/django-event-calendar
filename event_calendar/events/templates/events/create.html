@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My HTML Page</title>
+</head>
+<body>
+    <nav id="body-nav">
+
+    </nav>
+    <main id="body-main">
+        <h1>Create New Event</h1>
+        <form action="{% url 'events:event_create' %}" method="POST">
+            {% csrf_token %}
+            <label>Name</label>
+            <input id="name" name="name_field" placeholder="event name"></input>
+            <br/>
+            <label>Description</label>
+            <input id="description" name="description_field" placeholder="event description"></input>
+            <br/>
+            <button type="submit">Create Event</button>
+        </form>
+    </main>
+    <footer id="body-footer">
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[
+    {
+      "model": "events.Event",
+      "pk": 4,
+      "fields": {
+        "name": "Doctor's Appointment UPDATED",
+        "description": "Time to get your teeth checked!",
+        "created_at": "2021-08-01 13:00:00"
+      }
+    }
+]

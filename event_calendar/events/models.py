@@ -7,3 +7,7 @@ class Event(models.Model):
     starts_at = models.DateTimeField(default=timezone.now)
     ends_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
+    comment = models.CharField(max_length=256)
+
+    def __str__(self):
+        return f"{self.name}"
